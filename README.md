@@ -54,9 +54,9 @@
 | prefecture_id | integer    | null: false                    |
 | municipality  | string     | null: false                    |
 | address       | string     | null: false                    |
-| building_name | string     | null: false                    |
+| building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| purchase_id   | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
