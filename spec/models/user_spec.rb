@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do 
+  before do
     @user = FactoryBot.build(:user)
   end
 
-  describe 'ユーザー新規登録'  do
+  describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
       it 'すべての項目が存在すれば登録できる' do
         expect(@user).to be_valid
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
       it 'emailに@が含まれていないと登録できない' do
         @user.email = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'emailが重複すると登録できない' do
         @user.save
@@ -75,12 +75,12 @@ RSpec.describe User, type: :model do
       it 'passwordが5文字以下だと登録できない' do
         @user.password = '11111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'passwordが半角英数字混合でなければ登録できない' do
         @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password should be a mixture of half-width numbers and English")
+        expect(@user.errors.full_messages).to include('Password should be a mixture of half-width numbers and English')
       end
       it 'passwordが存在してもpasssword_confirmationが空では登録できない' do
         @user.password = '11111a'
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
       it 'lastnameが全角（漢字・ひらがな・カタカナ）で入力されていないと登録できない' do
         @user.lastname = 'ﾃｽﾄaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname Fill in full-width hiragana, katakana, and kanji")
+        expect(@user.errors.full_messages).to include('Lastname Fill in full-width hiragana, katakana, and kanji')
       end
       it 'firstnameが空だと登録できない' do
         @user.firstname = ''
@@ -112,7 +112,7 @@ RSpec.describe User, type: :model do
       it 'firstnameが全角（漢字・ひらがな・カタカナ）で入力されていないと登録できない' do
         @user.firstname = 'ﾃｽﾄaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Firstname Fill in full-width hiragana, katakana, and kanji")
+        expect(@user.errors.full_messages).to include('Firstname Fill in full-width hiragana, katakana, and kanji')
       end
       it 'last_furiganaが空だと登録できない' do
         @user.last_furigana = ''
@@ -122,7 +122,7 @@ RSpec.describe User, type: :model do
       it 'last_furiganaが全角（カタカナ）で入力されていないと登録できない' do
         @user.last_furigana = 'ふりがなてすと'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last furigana Fill in full-width katakana")
+        expect(@user.errors.full_messages).to include('Last furigana Fill in full-width katakana')
       end
       it 'first_furiganaが空だと登録できない' do
         @user.first_furigana = ''
@@ -132,7 +132,7 @@ RSpec.describe User, type: :model do
       it 'first_furiganaが全角（カタカナ）で入力されていないと登録できない' do
         @user.first_furigana = 'ふりがなてすと'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First furigana Fill in full-width katakana")
+        expect(@user.errors.full_messages).to include('First furigana Fill in full-width katakana')
       end
       it 'birthdayが空だと登録できない' do
         @user.birthday = ''
@@ -140,5 +140,5 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
     end
-  end  
+  end
 end
