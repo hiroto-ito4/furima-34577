@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-  belongs_to : user
+  belongs_to :user
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -9,4 +9,18 @@ class Item < ApplicationRecord
   belongs_to :shipping
   belongs_to :area
   belongs_to :estimate
+
+  with_options presence: true do 
+    validates :product_name
+    validates :description
+    validates :price
+    validates :image
+  end
+  with_options numericality: { other_than: 1 }
+    validates :category_id
+    validates :status_id
+    validates :shipping_id
+    validates :area_id
+    validates :estimate_id
+  end
 end
