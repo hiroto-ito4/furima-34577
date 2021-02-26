@@ -7,12 +7,16 @@ class User < ApplicationRecord
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i,
                       message: 'should be a mixture of half-width numbers and English' }
-  validates :nickname, presence: true
-  validates :lastname, presence: true,
-                       format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Fill in full-width hiragana, katakana, and kanji' }
-  validates :firstname, presence: true,
-                        format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Fill in full-width hiragana, katakana, and kanji' }
-  validates :last_furigana, presence: true, format: { with: /\p{katakana}/, message: 'Fill in full-width katakana' }
-  validates :first_furigana, presence: true, format: { with: /\p{katakana}/, message: 'Fill in full-width katakana' }
-  validates :birthday, presence: true
-end
+  with_options presence: true do 
+    validates :nickname
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: 'Fill in full-width hiragana, katakana, and kanji' } do
+      validates :lastname
+      validates :firstname
+    end
+    with_options format: { with: /\p{katakana}/, message: 'Fill in full-width katakana' } do
+      validates :last_furigana
+      validates :first_furigana
+    end
+    validates :birthday
+  end
+  end

@@ -82,6 +82,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password should be a mixture of half-width numbers and English')
       end
+      it 'passwordが半角英数字混合でなければ登録できない' do
+        @user.password = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password should be a mixture of half-width numbers and English')
+      end
       it 'passwordが存在してもpasssword_confirmationが空では登録できない' do
         @user.password = '11111a'
         @user.password_confirmation = ''
