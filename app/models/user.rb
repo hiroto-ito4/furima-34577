@@ -18,5 +18,7 @@ class User < ApplicationRecord
       validates :first_furigana
     end
     validates :birthday
+
+    has_many : items
   end
   end
