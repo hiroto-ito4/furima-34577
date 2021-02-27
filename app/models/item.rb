@@ -25,4 +25,5 @@ class Item < ApplicationRecord
     validates :area_id
     validates :estimate_id
   end
-end
+
+
