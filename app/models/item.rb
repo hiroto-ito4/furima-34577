@@ -11,19 +11,19 @@ class Item < ApplicationRecord
   belongs_to :estimate
 
   with_options presence: true do 
+    validates :image
     validates :product_name
     validates :description
-    validates :price,length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
-      greater_than: 300, less_than: 9999999
-      }
-    validates :image
   end
-  with_options numericality: { other_than: 1 } 
+  with_options numericality: { other_than: 1 ,message:'Please select'} do
     validates :category_id
     validates :status_id
     validates :shipping_id
     validates :area_id
     validates :estimate_id
   end
-
+  validates :price,presence: true,numericality: { only_integer: true,
+    greater_than: 300, less_than: 9999999 ,message:'Please enter a half-width number between 300 and 9999999'
+    }
+end
 
