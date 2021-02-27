@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     validates :estimate_id
   end
   validates :price,presence: true,numericality: { only_integer: true,
-    greater_than: 300, less_than: 9999999 ,message:'Please enter a half-width number between 300 and 9999999'
+    greater_than: 300, less_than: 9999999 ,message:'Please enter a half-width number between 300 and 9,999,999'
     }
 end
 
