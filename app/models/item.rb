@@ -13,12 +13,12 @@ class Item < ApplicationRecord
   with_options presence: true do 
     validates :product_name
     validates :description
-    validates :price, format: {with: VALID_PRICEL_HALF},length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
-      greater_than: 300, less_than: 10000000
+    validates :price,length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
+      greater_than: 300, less_than: 9999999
       }
     validates :image
   end
-  with_options numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } 
     validates :category_id
     validates :status_id
     validates :shipping_id
