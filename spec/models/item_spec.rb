@@ -11,15 +11,15 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'priceが半角数字であれば登録できる' do
-        @item.price = '444'
+        @item.price = 444
         expect(@item).to be_valid
       end
       it 'priceが300以上9,999,999以下であれば登録できる' do
-        @item.price = '300'
+        @item.price = 300
         expect(@item).to be_valid
       end
       it 'priceが300以上9,999,999以下であれば登録できる' do
-        @item.price = '9999999'
+        @item.price = 9999999
         expect(@item).to be_valid
       end
     end
@@ -40,27 +40,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'categoryを選択しないと登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Please select')
       end
       it 'statusを選択しないと登録できない' do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Status Please select')
       end
       it 'shippingを選択しないと登録できない' do
-        @item.shipping_id = '1'
+        @item.shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping Please select')
       end
       it 'areaを選択しないと登録できない' do
-        @item.area_id = '1'
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Area Please select')
       end
       it 'estimateを選択しないと登録できない' do
-        @item.estimate_id = '1'
+        @item.estimate_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Estimate Please select')
       end
@@ -75,12 +75,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが300未満だと登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが9,999,999より大きいと登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
