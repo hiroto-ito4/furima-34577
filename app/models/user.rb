@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i,
                       message: 'should be a mixture of half-width numbers and English' }
-  with_options presence: true do 
+  with_options presence: true do
     validates :nickname
     with_options format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: 'Fill in full-width hiragana, katakana, and kanji' } do
       validates :lastname
@@ -19,4 +19,6 @@ class User < ApplicationRecord
     end
     validates :birthday
   end
-  end
+
+  has_many :items
+end
