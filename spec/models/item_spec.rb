@@ -19,7 +19,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'priceが300以上9,999,999以下であれば登録できる' do
-        @item.price = 9999999
+        @item.price = 9_999_999
         expect(@item).to be_valid
       end
     end
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが9,999,999より大きいと登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
