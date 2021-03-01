@@ -42,47 +42,47 @@ RSpec.describe Item, type: :model do
       it 'categoryを選択しないと登録できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Please select")
+        expect(@item.errors.full_messages).to include('Category Please select')
       end
       it 'statusを選択しないと登録できない' do
         @item.status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Please select")
+        expect(@item.errors.full_messages).to include('Status Please select')
       end
       it 'shippingを選択しないと登録できない' do
         @item.shipping_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping Please select")
+        expect(@item.errors.full_messages).to include('Shipping Please select')
       end
       it 'areaを選択しないと登録できない' do
         @item.area_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area Please select")
+        expect(@item.errors.full_messages).to include('Area Please select')
       end
       it 'estimateを選択しないと登録できない' do
         @item.estimate_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Estimate Please select")
+        expect(@item.errors.full_messages).to include('Estimate Please select')
       end
       it 'priceが半角数字でないと登録できない' do
         @item.price = '７７７'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please enter a half-width number between 300 and 9,999,999")
+        expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが半角数字でないと登録できない' do
         @item.price = 'あああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please enter a half-width number between 300 and 9,999,999")
+        expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが300未満だと登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please enter a half-width number between 300 and 9,999,999")
+        expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'priceが9,999,999より大きいと登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please enter a half-width number between 300 and 9,999,999")
+        expect(@item.errors.full_messages).to include('Price Please enter a half-width number between 300 and 9,999,999')
       end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
