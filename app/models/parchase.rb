@@ -1,0 +1,2 @@
+class Parchase < ApplicationRecord
+end
