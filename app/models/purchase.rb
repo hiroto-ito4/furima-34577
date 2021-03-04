@@ -1,7 +1,6 @@
 class Purchase < ApplicationRecord
-  before_action :authenticate_user!, except: :index
 
-  belongs_to : user
-  belongs_to : item
-  has_one : information
+  belongs_to :user
+  belongs_to :item
+  has_one :information
 end
