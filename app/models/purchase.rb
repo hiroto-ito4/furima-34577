@@ -1,4 +1,4 @@
-class Parchase < ApplicationRecord
+class Purchase < ApplicationRecord
   before_action :authenticate_user!, except: :index
 
   belongs_to : user
