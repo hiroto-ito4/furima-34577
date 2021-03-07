@@ -71,6 +71,21 @@ RSpec.describe PurchaseInformation, type: :model do
         @purchase_information.valid?
         expect(@purchase_information.errors.full_messages).to include('Phone number Please enter only half-width numbers')
       end
+      it 'phone_numberが11文字以下でなければ登録できない' do
+        @purchase_information.phone_number = '090123456789'
+        @purchase_information.valid?
+        expect(@purchase_information.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+      end
+      it 'user_idが存在しなければ登録できない' do
+        @purchase_information.user_id = ''
+        @purchase_information.valid?
+        expect(@purchase_information.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが存在しなければ登録できない' do
+        @purchase_information.item_id = ''
+        @purchase_information.valid?
+        expect(@purchase_information.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end

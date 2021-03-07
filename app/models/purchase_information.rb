@@ -10,7 +10,10 @@ class PurchaseInformation
   with_options presence: true do
     validates :municipality
     validates :address
-    validates :phone_number, numericality: { only_integer: true, message: 'Please enter only half-width numbers' }
+    validates :phone_number, numericality: { only_integer: true, message: 'Please enter only half-width numbers' },
+                             length: { maximum: 11 }
+    validates :user_id
+    validates :item_id
   end
 
   def save
