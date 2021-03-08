@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe PurchaseInformation, type: :model do
   before do
-    @purchase_information = FactoryBot.build(:purchase_information)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @purchase_information = FactoryBot.build(:purchase_information, user_id: user.id, item_id: item.id)
+    sleep(0.1)
   end
 
   describe '商品購入' do
@@ -77,12 +80,12 @@ RSpec.describe PurchaseInformation, type: :model do
         expect(@purchase_information.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'user_idが存在しなければ登録できない' do
-        @purchase_information.user_id = ''
+        @purchase_information.user_id = nil
         @purchase_information.valid?
         expect(@purchase_information.errors.full_messages).to include("User can't be blank")
       end
       it 'item_idが存在しなければ登録できない' do
-        @purchase_information.item_id = ''
+        @purchase_information.item_id = nil
         @purchase_information.valid?
         expect(@purchase_information.errors.full_messages).to include("Item can't be blank")
       end
